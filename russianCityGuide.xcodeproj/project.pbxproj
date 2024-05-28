@@ -13,6 +13,10 @@
 		D777B2572C035073008140E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D777B2562C035073008140E9 /* Base */; };
 		D777B2592C035074008140E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D777B2582C035074008140E9 /* Assets.xcassets */; };
 		D777B25C2C035074008140E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D777B25B2C035074008140E9 /* Base */; };
+		D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D777B2642C03594C008140E9 /* RswiftLibrary */; };
+		D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2692C037445008140E9 /* allCityScreen.swift */; };
+		D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */; };
+		D7B111FF2C05396B000DEC67 /* PageControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		D777B2582C035074008140E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D777B25B2C035074008140E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D777B25D2C035074008140E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D777B2692C037445008140E9 /* allCityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allCityScreen.swift; sourceTree = "<group>"; };
+		D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainMenuButtonClass.swift; sourceTree = "<group>"; };
+		D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerTemplate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,34 @@
 		D777B24E2C035073008140E9 /* russianCityGuide */ = {
 			isa = PBXGroup;
 			children = (
+				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
+				D7A951B52C039AAB00D04FC4 /* Classes */,
+				D777B26D2C03745D008140E9 /* ViewControllers */,
 				D777B24F2C035073008140E9 /* AppDelegate.swift */,
 				D777B2512C035073008140E9 /* SceneDelegate.swift */,
-				D777B2532C035073008140E9 /* ViewController.swift */,
 				D777B2552C035073008140E9 /* Main.storyboard */,
 				D777B2582C035074008140E9 /* Assets.xcassets */,
 				D777B25A2C035074008140E9 /* LaunchScreen.storyboard */,
 				D777B25D2C035074008140E9 /* Info.plist */,
 			);
 			path = russianCityGuide;
+			sourceTree = "<group>";
+		};
+		D777B26D2C03745D008140E9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D777B2692C037445008140E9 /* allCityScreen.swift */,
+				D777B2532C035073008140E9 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D7A951B52C039AAB00D04FC4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -81,8 +108,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				D777B2672C035992008140E9 /* PBXTargetDependency */,
 			);
 			name = russianCityGuide;
+			packageProductDependencies = (
+				D777B2642C03594C008140E9 /* RswiftLibrary */,
+			);
 			productName = russianCityGuide;
 			productReference = D777B24C2C035073008140E9 /* russianCityGuide.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +142,9 @@
 				Base,
 			);
 			mainGroup = D777B2432C035073008140E9;
+			packageReferences = (
+				D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */,
+			);
 			productRefGroup = D777B24D2C035073008140E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,13 +172,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */,
+				D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */,
 				D777B2542C035073008140E9 /* ViewController.swift in Sources */,
 				D777B2502C035073008140E9 /* AppDelegate.swift in Sources */,
+				D7B111FF2C05396B000DEC67 /* PageControllerTemplate.swift in Sources */,
 				D777B2522C035073008140E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D777B2672C035992008140E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = D777B2662C035992008140E9 /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D777B2552C035073008140E9 /* Main.storyboard */ = {
@@ -363,6 +407,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D777B2642C03594C008140E9 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		D777B2662C035992008140E9 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D777B2442C035073008140E9 /* Project object */;
 }
