@@ -42,12 +42,12 @@ class allCityScreen: UIViewController {
     Самый западный город России с населением около полумилиона человек.
     """, photos: [kgdPic])
         
-        let kgdButton = CityButton(city: kgd, currentVC: self, currentScroll: scroll)
+        let kgdButton = CityButton(city: kgd, view: scroll)
         kgdButton.createButton()
         kgdButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
         buttons.append(kgdButton)
         
-        let spbButton = CityButton(city: spb, currentVC: self, currentScroll: scroll)
+        let spbButton = CityButton(city: spb, view: scroll)
         spbButton.createButton()
         spbButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
         buttons.append(spbButton)
