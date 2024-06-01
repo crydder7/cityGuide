@@ -14,11 +14,13 @@ class ViewController: UIViewController {
     let continueButton = UIButton()
     let mapImage = R.image.russiaMap()! as UIImage
     let text = "asd"
+    let mainLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .none
         createMap()
+        showLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +44,18 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 2.7) {
             self.continueButton.alpha = 1
         }
+    }
+    
+    func showLabel(){
+        mainLabel.text = "Russian City Guide"
+        mainLabel.font = UIFont(name: "RubikMonoOne-Regular", size: 30)
+        mainLabel.textAlignment = .left
+        mainLabel.numberOfLines = 3
+        mainLabel.lineBreakMode = .byWordWrapping
+        mainLabel.textColor = .black
+        mainLabel.frame = CGRect(x: 0, y: 30, width: 200, height: 300)
+        mainLabel.center.x = view.center.x
+        view.addSubview(mainLabel)
     }
     
     func showButton(){

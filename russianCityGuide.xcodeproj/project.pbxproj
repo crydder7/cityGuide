@@ -16,7 +16,9 @@
 		D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D777B2642C03594C008140E9 /* RswiftLibrary */; };
 		D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2692C037445008140E9 /* allCityScreen.swift */; };
 		D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */; };
+		D7ABE26F2C0B7F8900D94E1F /* cityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABE26E2C0B7F8900D94E1F /* cityClass.swift */; };
 		D7B111FF2C05396B000DEC67 /* PageControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */; };
+		D7D30CE02C07EC6700A71B84 /* RubikMonoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7D30CDF2C07EC6700A71B84 /* RubikMonoOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +32,9 @@
 		D777B25D2C035074008140E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D777B2692C037445008140E9 /* allCityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allCityScreen.swift; sourceTree = "<group>"; };
 		D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainMenuButtonClass.swift; sourceTree = "<group>"; };
+		D7ABE26E2C0B7F8900D94E1F /* cityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityClass.swift; sourceTree = "<group>"; };
 		D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerTemplate.swift; sourceTree = "<group>"; };
+		D7D30CDF2C07EC6700A71B84 /* RubikMonoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RubikMonoOne-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,7 @@
 		D777B24E2C035073008140E9 /* russianCityGuide */ = {
 			isa = PBXGroup;
 			children = (
-				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
+				D7D30CE22C07ECC000A71B84 /* Font */,
 				D7A951B52C039AAB00D04FC4 /* Classes */,
 				D777B26D2C03745D008140E9 /* ViewControllers */,
 				D777B24F2C035073008140E9 /* AppDelegate.swift */,
@@ -80,6 +84,7 @@
 		D777B26D2C03745D008140E9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
 				D777B2692C037445008140E9 /* allCityScreen.swift */,
 				D777B2532C035073008140E9 /* ViewController.swift */,
 			);
@@ -89,9 +94,18 @@
 		D7A951B52C039AAB00D04FC4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D7ABE26E2C0B7F8900D94E1F /* cityClass.swift */,
 				D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		D7D30CE22C07ECC000A71B84 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D7D30CDF2C07EC6700A71B84 /* RubikMonoOne-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +176,7 @@
 				D777B2592C035074008140E9 /* Assets.xcassets in Resources */,
 				D777B25C2C035074008140E9 /* Base in Resources */,
 				D777B2572C035073008140E9 /* Base in Resources */,
+				D7D30CE02C07EC6700A71B84 /* RubikMonoOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7ABE26F2C0B7F8900D94E1F /* cityClass.swift in Sources */,
 				D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */,
 				D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */,
 				D777B2542C035073008140E9 /* ViewController.swift in Sources */,

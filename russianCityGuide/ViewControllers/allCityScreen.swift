@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreLocation
+import CoreLocationUI
 
 class allCityScreen: UIViewController {
     
@@ -13,38 +15,59 @@ class allCityScreen: UIViewController {
     let scroll = UIScrollView()
     let countOfCities = 3
     var animator = UIDynamicAnimator()
-    
+    var buttons = [CityButton]()
     
     //MARK: Images for buttons
-    let kgdPic = UIImage(named: "kgd")
-    
+    let kgdPic = R.image.kgd()! as UIImage
+    let spbImage = R.image.spb()! as UIImage
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let kgd = CityButton(name: "Калининград", photo: kgdPic!, currentVC: self, nextVC: ViewController())
-        let kgdButton = kgd.createButton()
-        kgdButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
         navigationController?.navigationBar.backgroundColor = .lightGray
         navigationItem.hidesBackButton = true
         self.navigationController?.topViewController?.title = "Гид по городам России"
         self.navigationController?.topViewController?.view.backgroundColor = .lightGray
         view.backgroundColor = .white
         createScrollView()
-        scroll.addSubview(kgdButton)
+        createButtons()
+    }
+    
+    
+    func createButtons(){
+        let spb = City(name: "Санкт-Петербург", picForButton: spbImage, description: """
+     Город на Неве основан Петром I-ым в 1703 году.
+     """, photos: [spbImage])
+        let kgd = City(name: "Калининград", picForButton: kgdPic, description: """
+    Самый западный город России с населением около полумилиона человек.
+    """, photos: [kgdPic])
+        
+        let kgdButton = CityButton(city: kgd, currentVC: self, currentScroll: scroll)
+        kgdButton.createButton()
+        kgdButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
+        buttons.append(kgdButton)
+        
+        let spbButton = CityButton(city: spb, currentVC: self, currentScroll: scroll)
+        spbButton.createButton()
+        spbButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
+        buttons.append(spbButton)
+        
+        NSLayoutConstraint(item: buttons.last as Any, attribute: .bottom, relatedBy: .equal, toItem: scroll, attribute: .bottomMargin, multiplier: 1, constant: -25).isActive = true
     }
     
     func createScrollView(){
         scroll.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
         scroll.isPagingEnabled = false
         scroll.frame = view.frame
+        scroll.canCancelContentTouches = true
         view.addSubview(scroll)
     }
     
-    @objc func showCityVC(sender:UIButton){
-        animator = UIDynamicAnimator(referenceView: view)
-        let snap = UISnapBehavior(item: sender, snapTo: CGPoint(x: -150, y: sender.center.y))
-        snap.damping = 1.3
-        animator.addBehavior(snap)
+    @objc func showCityVC(sender:CityButton){
+//        animator = UIDynamicAnimator(referenceView: view)
+//        let snap = UISnapBehavior(item: sender, snapTo: CGPoint(x: -150, y: sender.center.y))
+//        snap.damping = 1.3
+//        animator.addBehavior(snap)
         UIView.animate(withDuration: 0.2) {
             sender.transform = .init(scaleX: 0.85, y: 0.85)
         } completion: { final in
@@ -52,6 +75,7 @@ class allCityScreen: UIViewController {
                 sender.transform = .init(scaleX: 1, y: 1)
             }
         }
+        view.isHidden = true
         let cityPage = PageControllerTemplate()
         navigationController?.pushViewController(cityPage, animated: true)
     }
