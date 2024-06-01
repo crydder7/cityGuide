@@ -21,5 +21,4 @@ class PageControllerTemplate: UIPageViewController {
         navigationController?.popViewController(animated: true)
         navigationController?.viewControllers.last?.view.isHidden = false
     }
-
 }
