@@ -2,15 +2,41 @@ import UIKit
 
 class PageControllerTemplate: UIPageViewController {
     
-    let name = "Калининград"
+    var city: City!
+    var page1 = mainCityScreen()
+    var page2 = weatherScreen()
+    lazy var pages = [page1,page2]
     var animator = UIDynamicAnimator()
     var str = AttributedString()
     
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        setViewControllers([pages[0]], direction: .forward, animated: true)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = name
+        let pageControl = UIPageControl.appearance()
+        pageControl.backgroundStyle = .prominent
+        pageControl.currentPageIndicatorTintColor = .black
+        pageControl.pageIndicatorTintColor = .gray
+        
+        self.title = city.name
+//        let task = Thread{ [self] in
+//            page1.city = self.city
+//            page2.city = self.city
+//        }
+//        task.qualityOfService = .userInteractive
+//        task.main()
+        self.dataSource = self
+        self.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goBack(sender:)))
     }
+    
     
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
@@ -21,4 +47,37 @@ class PageControllerTemplate: UIPageViewController {
         navigationController?.popViewController(animated: true)
         navigationController?.viewControllers.last?.view.isHidden = false
     }
+    
+    public func throwCity(){
+        self.page1.city = self.city
+        self.page2.city = self.city
+    }
+}
+
+extension PageControllerTemplate : UIPageViewControllerDelegate, UIPageViewControllerDataSource{
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: viewController),
+                     currentIndex > 0 else {
+                   return nil
+               }
+        return pages[currentIndex - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let currentIndex = pages.firstIndex(of: viewController),
+                     currentIndex < pages.count - 1 else {
+                   return nil
+               }
+        return pages[currentIndex + 1]
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return pages.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first, let firstViewControllerIndex = pages.firstIndex(of: firstViewController) else { return 0 }
+                return firstViewControllerIndex
+    }
+    
 }

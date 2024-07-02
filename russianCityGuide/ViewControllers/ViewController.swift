@@ -63,24 +63,30 @@ class ViewController: UIViewController {
         continueButton.layer.cornerRadius = 25
         continueButton.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0)
         continueButton.backgroundColor = .lightGray
-        continueButton.frame = CGRect(x: 0, y: 650, width: 180, height: 80)
+        continueButton.frame = CGRect(x: 0, y: 0, width: 180, height: 80)
         continueButton.center.x = self.view.center.x
         continueButton.layer.borderColor = .init(red: 1, green: 0.4, blue: 0.2, alpha: 0.75)
         continueButton.layer.borderWidth = 5
         continueButton.addTarget(self, action: #selector(goToNextScreen(sender:)), for: .touchUpInside)
         continueButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         continueButton.setTitleColor(.black, for: .normal)
-        
-        //MARK: do attributed string
+        view.addSubview(continueButton)
+        continueButton.translatesAutoresizingMaskIntoConstraints = false
+        //TODO: do attributed string
         //continueButton.setAttributedTitle(<#T##title: NSAttributedString?##NSAttributedString?#>, for: <#T##UIControl.State#>)
+        
+        continueButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        continueButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        continueButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -75).isActive = true
+        continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
 //        NSLayoutConstraint.activate([
 //            NSLayoutConstraint.init(item: continueButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150),
 //            NSLayoutConstraint.init(item: continueButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75),
 //            NSLayoutConstraint.init(item: continueButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: 120),
-//            NSLayoutConstraint.init(item: continueButton, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1, constant: 100)
+//            NSLayoutConstraint.init(item: continueButton, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1, constant: 100)
 //        ])
-        view.addSubview(continueButton)
+        
     }
     
     @objc func goToNextScreen(sender: UIButton){

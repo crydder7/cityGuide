@@ -77,6 +77,8 @@ class allCityScreen: UIViewController {
         }
         view.isHidden = true
         let cityPage = PageControllerTemplate()
+        cityPage.city = sender.city
+        cityPage.throwCity()
         navigationController?.pushViewController(cityPage, animated: true)
     }
 }

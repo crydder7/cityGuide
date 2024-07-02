@@ -20,22 +20,17 @@ class CityButton : UIButton{
     
     func createButton(){
         self.translatesAutoresizingMaskIntoConstraints = false
-        CityButton.sizeX = Int(view.bounds.width) - 10
+        CityButton.sizeX = Int(view.bounds.width) - 12
         view.addSubview(self)
+        self.widthAnchor.constraint(equalToConstant: CGFloat(CityButton.sizeX)).isActive = true
+        self.heightAnchor.constraint(equalToConstant: CGFloat(CityButton.sizeY)).isActive = true
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 6).isActive = true
+        self.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         if CityButton.allCities.isEmpty{
-            self.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(CityButton.sizeY)))
-            self.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(CityButton.sizeX)))
-            NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1, constant: 5).isActive = true
-            NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1, constant: 5).isActive = true
-            NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 25).isActive = true
-            NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+            self.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
             } else {
-                self.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(CityButton.sizeY)))
-                self.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(CityButton.sizeX)))
-                NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leadingMargin, multiplier: 1, constant: 5).isActive = true
-                NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailingMargin, multiplier: 1, constant: 5).isActive = true
-                NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: CityButton.allCities.last, attribute: .bottom, multiplier: 1, constant: 20).isActive = true
-                NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+            self.topAnchor.constraint(equalTo: CityButton.allCities.last!.bottomAnchor, constant: 20).isActive = true
         }
         
         self.clipsToBounds = true
