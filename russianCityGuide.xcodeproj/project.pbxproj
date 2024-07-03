@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D70443692C31EBFB008F1645 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70443682C31EBFB008F1645 /* Condition.swift */; };
 		D704436C2C31F78F008F1645 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704436B2C31F78F008F1645 /* Protocols.swift */; };
+		D76BBD962C3582F800623A37 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76BBD952C3582F800623A37 /* MapScreen.swift */; };
 		D777B2502C035073008140E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B24F2C035073008140E9 /* AppDelegate.swift */; };
 		D777B2522C035073008140E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2512C035073008140E9 /* SceneDelegate.swift */; };
 		D777B2542C035073008140E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2532C035073008140E9 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		D70443682C31EBFB008F1645 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		D704436B2C31F78F008F1645 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D76BBD952C3582F800623A37 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		D777B24C2C035073008140E9 /* russianCityGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = russianCityGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D777B24F2C035073008140E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D777B2512C035073008140E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				D7D2F1582C20F55200D9D4C4 /* mainCityScreen.swift */,
 				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
 				D777B2692C037445008140E9 /* allCityScreen.swift */,
+				D76BBD952C3582F800623A37 /* MapScreen.swift */,
 				D777B2532C035073008140E9 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -217,6 +220,7 @@
 				D7D2F15C2C20F6C300D9D4C4 /* weatherScreen.swift in Sources */,
 				D777B2502C035073008140E9 /* AppDelegate.swift in Sources */,
 				D7D2F1592C20F55200D9D4C4 /* mainCityScreen.swift in Sources */,
+				D76BBD962C3582F800623A37 /* MapScreen.swift in Sources */,
 				D704436C2C31F78F008F1645 /* Protocols.swift in Sources */,
 				D70443692C31EBFB008F1645 /* Condition.swift in Sources */,
 				D7B111FF2C05396B000DEC67 /* PageControllerTemplate.swift in Sources */,

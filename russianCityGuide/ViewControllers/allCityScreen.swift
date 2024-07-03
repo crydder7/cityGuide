@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import CoreLocation
-import CoreLocationUI
 
 class allCityScreen: UIViewController {
     
@@ -59,7 +57,8 @@ class allCityScreen: UIViewController {
         scroll.contentSize = CGSize(width: view.bounds.width, height: view.bounds.height)
         scroll.isPagingEnabled = false
         scroll.frame = view.frame
-        scroll.canCancelContentTouches = true
+        scroll.scrollsToTop = true
+        scroll.canCancelContentTouches = false
         view.addSubview(scroll)
     }
     
@@ -78,7 +77,7 @@ class allCityScreen: UIViewController {
         view.isHidden = true
         let cityPage = PageControllerTemplate()
         cityPage.city = sender.city
-        cityPage.throwCity()
+//        cityPage.throwCity()
         navigationController?.pushViewController(cityPage, animated: true)
     }
 }

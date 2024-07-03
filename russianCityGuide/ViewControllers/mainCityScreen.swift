@@ -1,8 +1,8 @@
 import UIKit
 
-class mainCityScreen: UIViewController {
+class mainCityScreen: UIViewController, CityProtocol {
     
-    var city: City?
+    weak var city: City?
     let mainLabel = UILabel()
     let info = UITextView()
 

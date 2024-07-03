@@ -9,4 +9,6 @@ import Foundation
 
 struct Condition:Decodable{
     let icon: String
+    let text: String
+    let code: Int
 }

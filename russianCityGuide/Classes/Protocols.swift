@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CityProtocol:Equatable{
-    var city: City! { get set }
+    var city: City? { get set }
 }
+

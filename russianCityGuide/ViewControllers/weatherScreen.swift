@@ -4,8 +4,9 @@ class weatherScreen: UIViewController, CityProtocol {
     
     let weatherTitle = UILabel()
     let weather = UILabel()
-    var city: City!
+    weak var city: City?
     let load = UIActivityIndicatorView(style: .large)
+    let icon = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad() 
@@ -15,34 +16,49 @@ class weatherScreen: UIViewController, CityProtocol {
         load.hidesWhenStopped = true
         setupTitle()
         setupWeather()
-        
+        createImage()
     }
     
     func setupWeather(){
-        parseJson(str: "https://api.weatherapi.com/v1/current.json?key=b4024a0f93904be5a48154154242906&q=\(city.name)&aqi=no") { data in
-            let weather = Weather(location: data!.location, current: data!.current)
-            let str = "https:\(weather.current.condition.icon)"
-            guard let url = URL(string: str) else { return }
-            DispatchQueue.main.async{
-                self.weather.text = "\(weather.current.temp_c)°C"
-//                self.downloadImage(from: url)
+        weather.text = "Сейчас: "
+        parseJson(str: "https://api.weatherapi.com/v1/current.json?key=b4024a0f93904be5a48154154242906&q=\(city!.name))&aqi=no") { data in
+            guard let data = data else {
+                print("error with data")
+                DispatchQueue.main.async{ [weak self] in
+                    guard let self = self else { return }
+                    self.weather.text! += "Load error"
+                    icon.image = UIImage(named: "unknown")
+                    self.load.stopAnimating()
+                }
+                return
+            }
+            let weather = Weather(location: data.location, current: data.current)
+            DispatchQueue.main.async{ [weak self] in
+                guard let self = self else { return }
+                self.city?.lat = weather.location.lat
+                self.city?.lon = weather.location.lon
+                self.weather.text! += "\(weather.current.temp_c)°C"
+                if weather.current.is_day == 1{
+                    icon.image = UIImage(named: "\(weather.current.condition.code)d")
+                } else{
+                    icon.image = UIImage(named: "\(weather.current.condition.code)n")
+                }
+                if icon.image == nil {
+                    icon.image = UIImage(named: "unknown")
+                }
+                print(weather.current.condition.code)
                 self.load.stopAnimating()
             }
         }
         
         view.addSubview(weather)
-//        weather.translatesAutoresizingMaskIntoConstraints = false
-//        weather.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-//        weather.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        weather.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//        weather.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-//        weather.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        weather.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20).isActive = true
-        
-        weather.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
+        weather.adjustsFontSizeToFitWidth = true
+        weather.translatesAutoresizingMaskIntoConstraints = false
+        weather.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        weather.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        weather.topAnchor.constraint(equalTo: weatherTitle.bottomAnchor, constant: 25).isActive = true
+        weather.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         weather.textAlignment = .center
-        weather.font = .systemFont(ofSize: 30)
-        weather.center = view.center
     }
     
     func setupTitle(){
@@ -81,21 +97,13 @@ class weatherScreen: UIViewController, CityProtocol {
         task.resume()
     }
     
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-//    
-//    func downloadImage(from url: URL){
-//        print("Download Started")
-//        getData(from: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//            print(response?.suggestedFilename ?? url.lastPathComponent)
-//            print("Download Finished")
-//            // always update the UI from the main thread
-//            DispatchQueue.main.async {
-//                self.icon.image = UIImage(data: data)
-//            }
-//        }
-//    }
+    func createImage(){
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(icon)
+        icon.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        icon.topAnchor.constraint(equalTo: weather.bottomAnchor, constant: 30).isActive = true
+        icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
     
 }

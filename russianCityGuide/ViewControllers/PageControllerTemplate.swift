@@ -2,16 +2,23 @@ import UIKit
 
 class PageControllerTemplate: UIPageViewController {
     
-    var city: City!
+    weak var city: City!
     var page1 = mainCityScreen()
     var page2 = weatherScreen()
-    lazy var pages = [page1,page2]
+    let page3 = MapScreen()
+    lazy var pages = [page1, page2, page3]
     var animator = UIDynamicAnimator()
     var str = AttributedString()
+    let queue = DispatchQueue(label: "throw city", qos: .userInteractive)
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal)
         setViewControllers([pages[0]], direction: .forward, animated: true)
+        queue.async {
+            self.page1.city = self.city
+            self.page2.city = self.city
+            self.page3.city = self.city
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -20,37 +27,28 @@ class PageControllerTemplate: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let pageControl = UIPageControl.appearance()
         pageControl.backgroundStyle = .prominent
         pageControl.currentPageIndicatorTintColor = .black
         pageControl.pageIndicatorTintColor = .gray
         
         self.title = city.name
-//        let task = Thread{ [self] in
-//            page1.city = self.city
-//            page2.city = self.city
-//        }
-//        task.qualityOfService = .userInteractive
-//        task.main()
         self.dataSource = self
         self.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goBack(sender:)))
     }
     
-    
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        //showThisView()
-    }
-    
     @objc func goBack(sender:UIButton){
+        self.view.isHidden = true
         navigationController?.popViewController(animated: true)
         navigationController?.viewControllers.last?.view.isHidden = false
     }
     
-    public func throwCity(){
+    public func throwCity() async{
         self.page1.city = self.city
         self.page2.city = self.city
+        self.page3.city = self.city
     }
 }
 
