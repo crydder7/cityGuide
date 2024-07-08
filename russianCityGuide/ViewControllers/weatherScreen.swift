@@ -10,6 +10,7 @@ class weatherScreen: UIViewController, CityProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad() 
+        
         load.startAnimating()
         load.center = view.center
         view.addSubview(load)
@@ -21,7 +22,7 @@ class weatherScreen: UIViewController, CityProtocol {
     
     func setupWeather(){
         weather.text = "Сейчас: "
-        parseJson(str: "https://api.weatherapi.com/v1/current.json?key=b4024a0f93904be5a48154154242906&q=\(city!.name))&aqi=no") { data in
+        parseJson(str: "https://api.weatherapi.com/v1/current.json?key=b4024a0f93904be5a48154154242906&q=\(city!.name)&aqi=no") { data in
             guard let data = data else {
                 print("error with data")
                 DispatchQueue.main.async{ [weak self] in
@@ -104,6 +105,14 @@ class weatherScreen: UIViewController, CityProtocol {
         icon.heightAnchor.constraint(equalToConstant: 120).isActive = true
         icon.topAnchor.constraint(equalTo: weather.bottomAnchor, constant: 30).isActive = true
         icon.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    //MARK: -async/await JSON parsing
+    func parseJSON(url:URL) async throws -> Weather{
+        let req = URLRequest(url: url)
+        let (data,_) = try await URLSession.shared.data(for: req)
+        let weather = try JSONDecoder().decode(Weather.self, from: data)
+        return weather
     }
     
 }

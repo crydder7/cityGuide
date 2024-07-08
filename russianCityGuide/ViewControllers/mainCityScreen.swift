@@ -8,6 +8,7 @@ class mainCityScreen: UIViewController, CityProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             if city != nil{

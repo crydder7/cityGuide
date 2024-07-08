@@ -16,8 +16,8 @@ class allCityScreen: UIViewController {
     var buttons = [CityButton]()
     
     //MARK: Images for buttons
-    let kgdPic = R.image.kgd()! as UIImage
-    let spbImage = R.image.spb()! as UIImage
+    let kgdPic = UIImage(named: "kgd")!
+    let spbImage = UIImage(named: "spb")!
 
     
     override func viewDidLoad() {
@@ -26,7 +26,6 @@ class allCityScreen: UIViewController {
         navigationItem.hidesBackButton = true
         self.navigationController?.topViewController?.title = "Гид по городам России"
         self.navigationController?.topViewController?.view.backgroundColor = .lightGray
-        view.backgroundColor = .white
         createScrollView()
         createButtons()
     }

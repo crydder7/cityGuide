@@ -18,6 +18,8 @@
 		D777B25C2C035074008140E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D777B25B2C035074008140E9 /* Base */; };
 		D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D777B2642C03594C008140E9 /* RswiftLibrary */; };
 		D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2692C037445008140E9 /* allCityScreen.swift */; };
+		D798D1DD2C371620001A70D4 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D798D1DC2C371620001A70D4 /* PhotosView.swift */; };
+		D798D1E02C371A8D001A70D4 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D798D1DF2C371A8D001A70D4 /* PhotosCell.swift */; };
 		D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */; };
 		D7ABE26F2C0B7F8900D94E1F /* cityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABE26E2C0B7F8900D94E1F /* cityClass.swift */; };
 		D7B111FF2C05396B000DEC67 /* PageControllerTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */; };
@@ -42,6 +44,8 @@
 		D777B25B2C035074008140E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D777B25D2C035074008140E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D777B2692C037445008140E9 /* allCityScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allCityScreen.swift; sourceTree = "<group>"; };
+		D798D1DC2C371620001A70D4 /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
+		D798D1DF2C371A8D001A70D4 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 		D7A951B32C039AA400D04FC4 /* mainMenuButtonClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainMenuButtonClass.swift; sourceTree = "<group>"; };
 		D7ABE26E2C0B7F8900D94E1F /* cityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityClass.swift; sourceTree = "<group>"; };
 		D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerTemplate.swift; sourceTree = "<group>"; };
@@ -100,12 +104,13 @@
 		D777B26D2C03745D008140E9 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D7D2F15B2C20F6C300D9D4C4 /* weatherScreen.swift */,
-				D7D2F1582C20F55200D9D4C4 /* mainCityScreen.swift */,
-				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
-				D777B2692C037445008140E9 /* allCityScreen.swift */,
-				D76BBD952C3582F800623A37 /* MapScreen.swift */,
 				D777B2532C035073008140E9 /* ViewController.swift */,
+				D777B2692C037445008140E9 /* allCityScreen.swift */,
+				D7B111FE2C05396B000DEC67 /* PageControllerTemplate.swift */,
+				D7D2F1582C20F55200D9D4C4 /* mainCityScreen.swift */,
+				D7D2F15B2C20F6C300D9D4C4 /* weatherScreen.swift */,
+				D76BBD952C3582F800623A37 /* MapScreen.swift */,
+				D798D1DC2C371620001A70D4 /* PhotosView.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				D7B747C92C31D9C100981238 /* Location.swift */,
 				D7B747CB2C31DA5C00981238 /* Temperature.swift */,
 				D70443682C31EBFB008F1645 /* Condition.swift */,
+				D798D1DF2C371A8D001A70D4 /* PhotosCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,10 +220,12 @@
 				D7ABE26F2C0B7F8900D94E1F /* cityClass.swift in Sources */,
 				D7B747CA2C31D9C100981238 /* Location.swift in Sources */,
 				D7B747CC2C31DA5C00981238 /* Temperature.swift in Sources */,
+				D798D1DD2C371620001A70D4 /* PhotosView.swift in Sources */,
 				D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */,
 				D7A951B42C039AA400D04FC4 /* mainMenuButtonClass.swift in Sources */,
 				D777B2542C035073008140E9 /* ViewController.swift in Sources */,
 				D7D2F15C2C20F6C300D9D4C4 /* weatherScreen.swift in Sources */,
+				D798D1E02C371A8D001A70D4 /* PhotosCell.swift in Sources */,
 				D777B2502C035073008140E9 /* AppDelegate.swift in Sources */,
 				D7D2F1592C20F55200D9D4C4 /* mainCityScreen.swift in Sources */,
 				D76BBD962C3582F800623A37 /* MapScreen.swift in Sources */,

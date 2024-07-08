@@ -6,7 +6,8 @@ class PageControllerTemplate: UIPageViewController {
     var page1 = mainCityScreen()
     var page2 = weatherScreen()
     let page3 = MapScreen()
-    lazy var pages = [page1, page2, page3]
+    lazy var page4 = PhotosView(collectionViewLayout: self.createLayout())
+    lazy var pages = [page1, page2, page3, page4]
     var animator = UIDynamicAnimator()
     var str = AttributedString()
     let queue = DispatchQueue(label: "throw city", qos: .userInteractive)
@@ -18,6 +19,7 @@ class PageControllerTemplate: UIPageViewController {
             self.page1.city = self.city
             self.page2.city = self.city
             self.page3.city = self.city
+            self.page4.city = self.city
         }
     }
     
@@ -49,6 +51,17 @@ class PageControllerTemplate: UIPageViewController {
         self.page1.city = self.city
         self.page2.city = self.city
         self.page3.city = self.city
+    }
+    
+    func createLayout()->UICollectionViewFlowLayout{
+        let flow = UICollectionViewFlowLayout()
+//        flow.itemSize.height = 200
+        flow.estimatedItemSize = .init(width: 200, height: 200)
+//        flow.minimumInteritemSpacing = 25
+//        flow.itemSize.width = 200
+//        flow.minimumLineSpacing = 15
+        flow.sectionInset = .init(top: 20, left: 20, bottom: 20, right: 20)
+        return flow
     }
 }
 

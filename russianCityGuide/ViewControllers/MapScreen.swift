@@ -15,6 +15,7 @@ class MapScreen: UIViewController, CityProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         load.hidesWhenStopped = true
         load.center = view.center
         load.startAnimating()
