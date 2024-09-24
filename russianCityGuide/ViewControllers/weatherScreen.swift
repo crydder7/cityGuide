@@ -36,8 +36,6 @@ class weatherScreen: UIViewController, CityProtocol {
             let weather = Weather(location: data.location, current: data.current)
             DispatchQueue.main.async{ [weak self] in
                 guard let self = self else { return }
-                self.city?.lat = weather.location.lat
-                self.city?.lon = weather.location.lon
                 self.weather.text! += "\(weather.current.temp_c)°C"
                 self.weather.font = UIFont(name: "RubikMonoOne-Regular", size: 17)
                 if weather.current.is_day == 1{

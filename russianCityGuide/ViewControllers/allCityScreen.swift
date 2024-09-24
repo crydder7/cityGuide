@@ -6,18 +6,16 @@
 //
 
 import UIKit
+import RealmSwift
 
 class allCityScreen: UIViewController {
     
     let label = UILabel()
+    let realm = try! Realm()
     let scroll = UIScrollView()
     let countOfCities = 3
     var animator = UIDynamicAnimator()
     var buttons = [CityButton]()
-    
-    //MARK: Images for buttons
-    let kgdPic = UIImage(named: "kgd")!
-    let spbImage = UIImage(named: "spb")!
 
     
     override func viewDidLoad() {
@@ -32,23 +30,17 @@ class allCityScreen: UIViewController {
     
     
     func createButtons(){
-        let spb = City(name: "Санкт-Петербург", picForButton: spbImage, description: """
-     Город на Неве основан Петром I-ым в 1703 году.
-     """, photos: [spbImage])
-        let kgd = City(name: "Калининград", picForButton: kgdPic, description: """
-    Самый западный город России с населением около полумилиона человек.
-    """, photos: [kgdPic])
-        
-        let kgdButton = CityButton(city: kgd, view: scroll)
-        kgdButton.createButton()
-        kgdButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
-        buttons.append(kgdButton)
-        
-        let spbButton = CityButton(city: spb, view: scroll)
+        let allCities = realm.objects(City.self)
+        let spb = allCities.first(where: {$0.name == "Санкт-Петербург"})
+        let kgd = allCities.first(where: {$0.name == "Калининград"})
+        let spbButton = CityButton(city: spb!, view: scroll)
+        let kgdButton = CityButton(city: kgd!, view: scroll)
         spbButton.createButton()
-        spbButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
+        kgdButton.createButton()
         buttons.append(spbButton)
-        
+        buttons.append(kgdButton)
+        kgdButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
+        spbButton.addTarget(self, action: #selector(showCityVC(sender: )), for: .touchUpInside)
         NSLayoutConstraint(item: buttons.last as Any, attribute: .bottom, relatedBy: .equal, toItem: scroll, attribute: .bottomMargin, multiplier: 1, constant: -25).isActive = true
     }
     

@@ -51,13 +51,13 @@ class PhotosView: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return city.photos.count
+        return 6
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PhotosCell else { return UICollectionViewCell()}
-        let img = UIImageView(image: city.photos[indexPath.item])
-        cell.updateValues(img)
+//        let img = UIImageView(image: city.photos[indexPath.item])
+//        cell.updateValues(img)
         return cell
     }
 

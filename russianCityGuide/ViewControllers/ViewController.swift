@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
     
     var animator = UIDynamicAnimator()
+    let realm = try? Realm()
+    let usrDflt = UserDefaults.standard
     var imageView = UIImageView()
     let continueButton = UIButton()
     let mapImage = UIImage(named: "russiaMap")
@@ -20,8 +23,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.backgroundColor = .none
         view.backgroundColor = UIColor(named: "backColor")
-        createMap()
-        showLabel()
+        if usrDflt.bool(forKey: "login"){
+            let mainMenu = allCityScreen()
+            navigationController?.pushViewController(mainMenu, animated: true)
+        } else{
+            createMap()
+            showLabel()
+            usrDflt.set(true, forKey: "login")
+            let kgd = City()
+            kgd.name = "Калининград"
+            kgd.nameOfPic = "kgd"
+            kgd.descOfCity = "Самый западный город России с населением около полумилиона человек."
+            kgd.lat = 54.7833
+            kgd.lon = 20.5333
+            let spb = City()
+            spb.name = "Санкт-Петербург"
+            spb.nameOfPic = "spb"
+            spb.descOfCity = "Город на Неве основан Петром I-ым в 1703 году."
+            spb.lat = 59.9333
+            spb.lon = 30.3333
+            try! realm?.write{
+                realm?.add(kgd)
+                realm?.add(spb)
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

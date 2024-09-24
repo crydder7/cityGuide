@@ -1,18 +1,17 @@
 import Foundation
 import UIKit
+import RealmSwift
 
-class City{
-    let name : String
-    let picForButton : UIImage
-    let description : String
-    let photos : [UIImage]
-    var lat: Float = 0.0
-    var lon: Float = 0.0
+class City:Object{
+    @Persisted var name : String
+    @Persisted var nameOfPic : String
+    @Persisted var descOfCity : String
+    @Persisted var lat: Float
+    @Persisted var lon: Float
     
-    init(name: String, picForButton: UIImage, description: String, photos:[UIImage]) {
-        self.name = name
-        self.picForButton = picForButton
-        self.description = description
-        self.photos = photos
-    }
+//    init(name: String, picForButton: UIImage, descOfCity: String) {
+//        self.name = name
+//        self.picForButton = picForButton
+//        self.descOfCity = descOfCity
+//    }
 }

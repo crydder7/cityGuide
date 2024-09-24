@@ -36,7 +36,7 @@ class mainCityScreen: UIViewController, CityProtocol {
     }
     
     func dispCityInfo(){
-        self.info.text = self.city?.description
+        self.info.text = self.city?.descOfCity
         info.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(info)
         info.textColor = UIColor(named: "textColor")

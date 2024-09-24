@@ -1,7 +1,10 @@
 import Foundation
 import UIKit
+import RealmSwift
 
 class CityButton : UIButton{
+    
+    let realm = try! Realm()
     let city : City
     static var allCities = [UIButton]()
     let view : UIView
@@ -34,7 +37,9 @@ class CityButton : UIButton{
         }
         
         self.clipsToBounds = true
-        self.setBackgroundImage(self.city.picForButton, for: .normal)
+
+        let picForButton = UIImage(named: city.nameOfPic)
+        self.setBackgroundImage(picForButton, for: .normal)
         
         self.setTitle(self.city.name, for: .normal)
         self.titleLabel?.font = UIFont(name: "RubikMonoOne-Regular", size: 25)
