@@ -25,10 +25,9 @@ class PhotosView: UICollectionViewController {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
         // Register cell classes
         self.collectionView!.register(PhotosCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        self.collectionView.backgroundColor = UIColor(named: "backColor")
         // Do any additional setup after loading the view.
     }
 
@@ -58,8 +57,7 @@ class PhotosView: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PhotosCell else { return UICollectionViewCell()}
         let img = UIImageView(image: city.photos[indexPath.item])
-        let text = city.name
-        cell.updateValues(img, text)
+        cell.updateValues(img)
         return cell
     }
 

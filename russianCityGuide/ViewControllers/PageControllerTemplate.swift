@@ -29,16 +29,17 @@ class PageControllerTemplate: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor(named: "backColor")
         let pageControl = UIPageControl.appearance()
         pageControl.backgroundStyle = .prominent
-        pageControl.currentPageIndicatorTintColor = .black
-        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = UIColor(named: "textColor")
+        pageControl.pageIndicatorTintColor = UIColor(named: "AccentColor")
         
         self.title = city.name
         self.dataSource = self
         self.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goBack(sender:)))
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "backColor")
     }
     
     @objc func goBack(sender:UIButton){
@@ -47,14 +48,16 @@ class PageControllerTemplate: UIPageViewController {
         navigationController?.viewControllers.last?.view.isHidden = false
     }
     
-    public func throwCity() async{
+    public func throwCity(){
         self.page1.city = self.city
         self.page2.city = self.city
         self.page3.city = self.city
+        self.page4.city = self.city
     }
     
     func createLayout()->UICollectionViewFlowLayout{
         let flow = UICollectionViewFlowLayout()
+        flow.collectionView?.backgroundColor = UIColor(named: "backColor")
 //        flow.itemSize.height = 200
         flow.estimatedItemSize = .init(width: 200, height: 200)
 //        flow.minimumInteritemSpacing = 25

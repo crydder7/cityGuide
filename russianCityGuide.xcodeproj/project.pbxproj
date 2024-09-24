@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		D777B2572C035073008140E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D777B2562C035073008140E9 /* Base */; };
 		D777B2592C035074008140E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D777B2582C035074008140E9 /* Assets.xcassets */; };
 		D777B25C2C035074008140E9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D777B25B2C035074008140E9 /* Base */; };
-		D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = D777B2642C03594C008140E9 /* RswiftLibrary */; };
 		D777B26A2C037446008140E9 /* allCityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D777B2692C037445008140E9 /* allCityScreen.swift */; };
 		D798D1DD2C371620001A70D4 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D798D1DC2C371620001A70D4 /* PhotosView.swift */; };
 		D798D1E02C371A8D001A70D4 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D798D1DF2C371A8D001A70D4 /* PhotosCell.swift */; };
@@ -57,12 +56,15 @@
 		D7D30CDF2C07EC6700A71B84 /* RubikMonoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RubikMonoOne-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D73BEA052CA2D33B00B1D6FE /* DataBase */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DataBase; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		D777B2492C035073008140E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D777B2652C03594C008140E9 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +90,7 @@
 		D777B24E2C035073008140E9 /* russianCityGuide */ = {
 			isa = PBXGroup;
 			children = (
+				D73BEA052CA2D33B00B1D6FE /* DataBase */,
 				D7D30CE22C07ECC000A71B84 /* Font */,
 				D7A951B52C039AAB00D04FC4 /* Classes */,
 				D777B26D2C03745D008140E9 /* ViewControllers */,
@@ -152,11 +155,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				D777B2672C035992008140E9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D73BEA052CA2D33B00B1D6FE /* DataBase */,
 			);
 			name = russianCityGuide;
 			packageProductDependencies = (
-				D777B2642C03594C008140E9 /* RswiftLibrary */,
 			);
 			productName = russianCityGuide;
 			productReference = D777B24C2C035073008140E9 /* russianCityGuide.app */;
@@ -187,7 +191,6 @@
 			);
 			mainGroup = D777B2432C035073008140E9;
 			packageReferences = (
-				D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */,
 			);
 			productRefGroup = D777B24D2C035073008140E9 /* Products */;
 			projectDirPath = "";
@@ -238,13 +241,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D777B2672C035992008140E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = D777B2662C035992008140E9 /* RswiftGenerateInternalResources */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D777B2552C035073008140E9 /* Main.storyboard */ = {
@@ -463,30 +459,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.5.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D777B2642C03594C008140E9 /* RswiftLibrary */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */;
-			productName = RswiftLibrary;
-		};
-		D777B2662C035992008140E9 /* RswiftGenerateInternalResources */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D777B2632C03594C008140E9 /* XCRemoteSwiftPackageReference "R" */;
-			productName = "plugin:RswiftGenerateInternalResources";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D777B2442C035073008140E9 /* Project object */;
 }

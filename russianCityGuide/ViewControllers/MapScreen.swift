@@ -15,11 +15,12 @@ class MapScreen: UIViewController, CityProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor(named: "backColor")
         load.hidesWhenStopped = true
         load.center = view.center
         load.startAnimating()
         createLabel()
+        //TODO: How to wait lon & lat without endless while?
         DispatchQueue.main.async{ [ weak self ] in
             guard let self = self else { return }
             if city?.lon != 0 && city?.lat != 0{
@@ -48,6 +49,7 @@ class MapScreen: UIViewController, CityProtocol {
     func createLabel(){
         titleLabel.text = "Карта города \(city?.name ?? "")"
         view.addSubview(titleLabel)
+        titleLabel.textColor = UIColor(named: "textColor")
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.widthAnchor.constraint(equalToConstant: view.frame.width - 70).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -57,12 +59,13 @@ class MapScreen: UIViewController, CityProtocol {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
         titleLabel.layer.cornerRadius = 32
-        titleLabel.layer.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
+        titleLabel.layer.backgroundColor = UIColor(named: "AccentColor")?.cgColor
     }
     
     func fullSizeButton(){
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(named: "AccentColor")
         //button.setTitle("Full size map", for: .normal)
         button.setImage(UIImage(named: "fullsize"), for: .normal)
         button.widthAnchor.constraint(equalToConstant: 70).isActive = true
@@ -74,7 +77,6 @@ class MapScreen: UIViewController, CityProtocol {
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.textAlignment = .center
         button.addTarget(self, action: #selector(fullSize(sender:)), for: .touchUpInside)
-        button.layer.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
         button.layer.cornerRadius = 35
     }
     

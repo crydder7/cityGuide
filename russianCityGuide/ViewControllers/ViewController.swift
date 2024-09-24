@@ -12,13 +12,14 @@ class ViewController: UIViewController {
     var animator = UIDynamicAnimator()
     var imageView = UIImageView()
     let continueButton = UIButton()
-    let mapImage = R.image.russiaMap()! as UIImage
+    let mapImage = UIImage(named: "russiaMap")
     let text = "asd"
     let mainLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.backgroundColor = .none
+        view.backgroundColor = UIColor(named: "backColor")
         createMap()
         showLabel()
     }
@@ -48,11 +49,11 @@ class ViewController: UIViewController {
     
     func showLabel(){
         mainLabel.text = "Russian City Guide"
+        mainLabel.textColor = UIColor(named: "textColor")
         mainLabel.font = UIFont(name: "RubikMonoOne-Regular", size: 30)
         mainLabel.textAlignment = .left
         mainLabel.numberOfLines = 3
         mainLabel.lineBreakMode = .byWordWrapping
-        mainLabel.textColor = .black
         mainLabel.frame = CGRect(x: 0, y: 30, width: 200, height: 300)
         mainLabel.center.x = view.center.x
         view.addSubview(mainLabel)
@@ -62,7 +63,7 @@ class ViewController: UIViewController {
         continueButton.setTitle("Go", for: .normal)
         continueButton.layer.cornerRadius = 25
         continueButton.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0)
-        continueButton.backgroundColor = .lightGray
+        continueButton.backgroundColor = UIColor(named: "AccentColor")
         continueButton.frame = CGRect(x: 0, y: 0, width: 180, height: 80)
         continueButton.center.x = self.view.center.x
         continueButton.layer.borderColor = .init(red: 1, green: 0.4, blue: 0.2, alpha: 0.75)

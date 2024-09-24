@@ -25,7 +25,7 @@ class allCityScreen: UIViewController {
         navigationController?.navigationBar.backgroundColor = .lightGray
         navigationItem.hidesBackButton = true
         self.navigationController?.topViewController?.title = "Гид по городам России"
-        self.navigationController?.topViewController?.view.backgroundColor = .lightGray
+        navigationController?.navigationBar.backgroundColor = UIColor(named: "backColor")
         createScrollView()
         createButtons()
     }
@@ -58,6 +58,7 @@ class allCityScreen: UIViewController {
         scroll.frame = view.frame
         scroll.scrollsToTop = true
         scroll.canCancelContentTouches = false
+        scroll.backgroundColor = UIColor(named: "backColor")
         view.addSubview(scroll)
     }
     
@@ -76,7 +77,7 @@ class allCityScreen: UIViewController {
         view.isHidden = true
         let cityPage = PageControllerTemplate()
         cityPage.city = sender.city
-//        cityPage.throwCity()
-        navigationController?.pushViewController(cityPage, animated: true)
+        self.navigationController?.pushViewController(cityPage, animated: true)
+        //cityPage.throwCity()
     }
 }

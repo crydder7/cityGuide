@@ -13,10 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         navCon.navigationBar.backgroundColor = .lightGray
-        window.backgroundColor = .white
+        window.backgroundColor = UIColor(named: "backColor")
         window.rootViewController = navCon
         window.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

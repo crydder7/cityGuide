@@ -10,7 +10,7 @@ class weatherScreen: UIViewController, CityProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad() 
-        
+        view.backgroundColor = UIColor(named: "backColor")
         load.startAnimating()
         load.center = view.center
         view.addSubview(load)
@@ -39,6 +39,7 @@ class weatherScreen: UIViewController, CityProtocol {
                 self.city?.lat = weather.location.lat
                 self.city?.lon = weather.location.lon
                 self.weather.text! += "\(weather.current.temp_c)°C"
+                self.weather.font = UIFont(name: "RubikMonoOne-Regular", size: 17)
                 if weather.current.is_day == 1{
                     icon.image = UIImage(named: "\(weather.current.condition.code)d")
                 } else{
@@ -47,7 +48,6 @@ class weatherScreen: UIViewController, CityProtocol {
                 if icon.image == nil {
                     icon.image = UIImage(named: "unknown")
                 }
-                print(weather.current.condition.code)
                 self.load.stopAnimating()
             }
         }
@@ -64,6 +64,7 @@ class weatherScreen: UIViewController, CityProtocol {
     
     func setupTitle(){
         weatherTitle.text = "Погода в городе"
+        weatherTitle.textColor = UIColor(named: "textColor")
         view.addSubview(weatherTitle)
         weatherTitle.translatesAutoresizingMaskIntoConstraints = false
         weatherTitle.widthAnchor.constraint(equalToConstant: view.frame.size.width - 70).isActive = true
@@ -74,7 +75,7 @@ class weatherScreen: UIViewController, CityProtocol {
         weatherTitle.textAlignment = .center
         weatherTitle.layer.cornerRadius = 30
         weatherTitle.adjustsFontSizeToFitWidth = true
-        weatherTitle.layer.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
+        weatherTitle.layer.backgroundColor = UIColor(named: "AccentColor")?.cgColor
     }
     
     func parseJson(str:String, comp: @escaping (Weather?)->Void){
@@ -101,6 +102,7 @@ class weatherScreen: UIViewController, CityProtocol {
     func createImage(){
         icon.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(icon)
+//        icon.backgroundColor = UIColor(named: "AccentColor")
         icon.widthAnchor.constraint(equalToConstant: 120).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 120).isActive = true
         icon.topAnchor.constraint(equalTo: weather.bottomAnchor, constant: 30).isActive = true
