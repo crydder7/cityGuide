@@ -40,6 +40,8 @@ class PageControllerTemplate: UIPageViewController {
         self.delegate = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goBack(sender:)))
         navigationController?.navigationBar.backgroundColor = UIColor(named: "backColor")
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        
     }
     
     @objc func goBack(sender:UIButton){
@@ -59,7 +61,8 @@ class PageControllerTemplate: UIPageViewController {
         let flow = UICollectionViewFlowLayout()
         flow.collectionView?.backgroundColor = UIColor(named: "backColor")
 //        flow.itemSize.height = 200
-        flow.estimatedItemSize = .init(width: 200, height: 200)
+        flow.estimatedItemSize = .init(width: 150, height: 150)
+        flow.minimumInteritemSpacing = 30
 //        flow.minimumInteritemSpacing = 25
 //        flow.itemSize.width = 200
 //        flow.minimumLineSpacing = 15

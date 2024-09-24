@@ -26,6 +26,7 @@ class PhotosCell: UICollectionViewCell {
 //        label.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.layer.cornerRadius = 15
         contentView.addSubview(img)
+        img.contentMode = .scaleAspectFill
 //        contentView.addSubview(label)
         contentView.layer.borderWidth = 2
         contentView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
@@ -40,7 +41,7 @@ class PhotosCell: UICollectionViewCell {
 //        label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
 //        label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
 //        label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        contentMode = .scaleAspectFit
+        contentMode = .scaleAspectFill
         img.layer.cornerCurve = .circular
 //        label.layer.cornerRadius = contentView.layer.cornerRadius
 //        label.textAlignment = .center

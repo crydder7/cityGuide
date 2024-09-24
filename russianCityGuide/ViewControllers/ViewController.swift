@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     var imageView = UIImageView()
     let continueButton = UIButton()
     let mapImage = UIImage(named: "russiaMap")
-    let text = "asd"
     let mainLabel = UILabel()
     
     override func viewDidLoad() {
@@ -25,6 +24,12 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(named: "backColor")
         if usrDflt.bool(forKey: "login"){
             let mainMenu = allCityScreen()
+            let cities = realm?.objects(City.self)
+            let kgd = cities?.first(where: { $0.name == "Калининград" })
+            try! realm?.write {
+                kgd?.lon = 20.510126
+                kgd?.lat = 54.710107
+            }
             navigationController?.pushViewController(mainMenu, animated: true)
         } else{
             createMap()
@@ -36,16 +41,19 @@ class ViewController: UIViewController {
             kgd.descOfCity = "Самый западный город России с населением около полумилиона человек."
             kgd.lat = 54.7833
             kgd.lon = 20.5333
+            kgd.url = "https://api.unsplash.com/collections/5AYv0h9iGsc/photos?client_id=htcjeIX2gBaiLxeLElueT6D39pVVH-6YDStTHZuNeKw&page=1"
             let spb = City()
             spb.name = "Санкт-Петербург"
             spb.nameOfPic = "spb"
             spb.descOfCity = "Город на Неве основан Петром I-ым в 1703 году."
             spb.lat = 59.9333
             spb.lon = 30.3333
+            spb.url = "https://api.unsplash.com/collections/BasdmDUdy80/photos?client_id=htcjeIX2gBaiLxeLElueT6D39pVVH-6YDStTHZuNeKw&page=1"
             try! realm?.write{
                 realm?.add(kgd)
                 realm?.add(spb)
             }
+            
         }
         
     }

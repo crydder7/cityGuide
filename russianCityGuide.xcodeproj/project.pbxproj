@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D70443692C31EBFB008F1645 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70443682C31EBFB008F1645 /* Condition.swift */; };
 		D704436C2C31F78F008F1645 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704436B2C31F78F008F1645 /* Protocols.swift */; };
+		D707A6F62CA33C82002DEE12 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707A6F52CA33C82002DEE12 /* Photos.swift */; };
 		D732F6592CA2E8CD002C5FCC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D732F6582CA2E8CD002C5FCC /* RealmSwift */; };
 		D732F65C2CA2E8DF002C5FCC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D732F65B2CA2E8DF002C5FCC /* Kingfisher */; };
 		D76BBD962C3582F800623A37 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76BBD952C3582F800623A37 /* MapScreen.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		D70443682C31EBFB008F1645 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		D704436B2C31F78F008F1645 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D707A6F52CA33C82002DEE12 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		D76BBD952C3582F800623A37 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		D777B24C2C035073008140E9 /* russianCityGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = russianCityGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D777B24F2C035073008140E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				D7B747CB2C31DA5C00981238 /* Temperature.swift */,
 				D70443682C31EBFB008F1645 /* Condition.swift */,
 				D798D1DF2C371A8D001A70D4 /* PhotosCell.swift */,
+				D707A6F52CA33C82002DEE12 /* Photos.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D707A6F62CA33C82002DEE12 /* Photos.swift in Sources */,
 				D7ABE26F2C0B7F8900D94E1F /* cityClass.swift in Sources */,
 				D7B747CA2C31D9C100981238 /* Location.swift in Sources */,
 				D7B747CC2C31DA5C00981238 /* Temperature.swift in Sources */,

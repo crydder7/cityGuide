@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "PhotoCell"
 
 class PhotosView: UICollectionViewController {
     
     var city: City!
+    let wait = UIActivityIndicatorView()
+    var urls = [String]()
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
@@ -28,6 +31,27 @@ class PhotosView: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(PhotosCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView.backgroundColor = UIColor(named: "backColor")
+        
+        wait.style = .large
+        wait.color = UIColor(named: "textColor")
+        wait.hidesWhenStopped = true
+        wait.center = self.collectionView.center
+        wait.startAnimating()
+        self.collectionView.addSubview(wait)
+        fetchImageData { [weak self] imgData in
+            guard let self else { return }
+            guard let imgs = imgData else { return }
+            for i in imgs{
+                urls.append(i.urls.regular)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) { [weak self] in
+                guard let self else { return }
+                self.wait.stopAnimating()
+                print(urls.count)
+                collectionView.reloadData()
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -51,13 +75,17 @@ class PhotosView: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 6
+        return 8
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PhotosCell else { return UICollectionViewCell()}
-//        let img = UIImageView(image: city.photos[indexPath.item])
-//        cell.updateValues(img)
+        if urls.isEmpty { return cell }
+        let url = URL(string: urls[indexPath.item])
+        let resource = KF.ImageResource(downloadURL: url!)
+        let img = UIImageView()
+        img.kf.setImage(with: resource)
+        cell.updateValues(img)
         return cell
     }
 
@@ -91,5 +119,30 @@ class PhotosView: UICollectionViewController {
     }
     */
     
+    func fetchImageData(completion: @escaping ([ImageData]?) -> Void) {
+        let urlString = city.url
+        
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode([ImageData].self, from: data)
+                completion(decodedData)
+            } catch {
+                print("Ошибка декодирования: \(error)")
+                completion(nil)
+            }
+        }.resume()
+    }
     
 }
+
+//54.710107, 20.510126
