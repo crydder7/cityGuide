@@ -1,5 +1,5 @@
 <ins><b><h1 align="center" face="sans-serif">RUSSIAN CITY GUIDE🇷🇺</h1></b></ins>
-<center><img src="screen1.jpeg" alt="gg" height=600 align="center"></center>
+<img src="screen1.jpeg" alt="gg" height=600 align="center"> <img src="record.gif" height="600">
 This is my pet-project. Here i did a guide for russian cities, where You can check photos, read a short descriprtion, see the map and know about weather in city. 
 
 I used UIKit, Realm, KingFisher and some APIs, like Unsplash and WeatherAPI.
