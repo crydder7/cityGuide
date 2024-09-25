@@ -100,7 +100,8 @@ class weatherScreen: UIViewController, CityProtocol {
     func createImage(){
         icon.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(icon)
-//        icon.backgroundColor = UIColor(named: "AccentColor")
+        icon.layer.cornerRadius = 32
+        icon.backgroundColor = UIColor(named: "AccentColor")
         icon.widthAnchor.constraint(equalToConstant: 120).isActive = true
         icon.heightAnchor.constraint(equalToConstant: 120).isActive = true
         icon.topAnchor.constraint(equalTo: weather.bottomAnchor, constant: 30).isActive = true

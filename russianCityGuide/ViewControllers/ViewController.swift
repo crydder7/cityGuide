@@ -24,12 +24,6 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor(named: "backColor")
         if usrDflt.bool(forKey: "login"){
             let mainMenu = allCityScreen()
-            let cities = realm?.objects(City.self)
-            let kgd = cities?.first(where: { $0.name == "Калининград" })
-            try! realm?.write {
-                kgd?.lon = 20.510126
-                kgd?.lat = 54.710107
-            }
             navigationController?.pushViewController(mainMenu, animated: true)
         } else{
             createMap()

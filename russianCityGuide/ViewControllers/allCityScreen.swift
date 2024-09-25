@@ -13,7 +13,6 @@ class allCityScreen: UIViewController {
     let label = UILabel()
     let realm = try! Realm()
     let scroll = UIScrollView()
-    let countOfCities = 2
     var animator = UIDynamicAnimator()
     var buttons = [CityButton]()
 

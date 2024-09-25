@@ -47,7 +47,6 @@ class PhotosView: UICollectionViewController {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) { [weak self] in
                 guard let self else { return }
                 self.wait.stopAnimating()
-                print(urls.count)
                 collectionView.reloadData()
             }
         }
