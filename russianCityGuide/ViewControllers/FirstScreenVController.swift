@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class wntroller: UIViewController {
     
     var animator = UIDynamicAnimator()
     let realm = try? Realm()
